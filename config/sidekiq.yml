@@ -1,0 +1,11 @@
+:concurrensy: 5
+
+:queues:
+    - [default, 1]
+
+:schedule:
+  expired_diaries_worker:
+    every: ["10m", first_in: "1s"]
+    class: ExpiredDiariesWorker
+
+

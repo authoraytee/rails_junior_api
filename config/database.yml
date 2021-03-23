@@ -1,0 +1,22 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  database: api_junior
+  username: postgres
+  password: postgres
+  host: localhost
+  port: 5432
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
+
+development:
+  <<: *default
+  database: api_junior
+
+test:
+  <<: *default
+  database: api_junior
+
+production:
+  <<: *default
+  database: api_junior
