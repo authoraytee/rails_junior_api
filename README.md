@@ -21,16 +21,14 @@
 
 ## Использование:
 **Для дневников**
+
 `localhost:5000/api/v1/diaries`
+
 `localhost:5000/api/v1/notes`
 
 **Для записей**
+
 `localhost:5000/api/v1/diary/1`
+
 `localhost:5000/api/v1/note/1`
 
-
----- заранее остановить редис и постгрес, если работает
-
- 
- 
- 
