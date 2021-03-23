@@ -11,11 +11,3 @@ services:
       POSTGRES_PASSWORD: postgres
     ports:
        - "127.0.0.1:5432:5432" 
-  # sidekiq:
-  #   build: .
-  #   volumes:
-  #     - .:/api_juior
-  #   links:
-  #     - db
-  #     - redis
-  #   command: bundle exec sidekiq
