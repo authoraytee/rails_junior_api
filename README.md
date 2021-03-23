@@ -4,31 +4,29 @@
 
 
 
-Перед запуском нужно иметь:
+## Перед запуском нужно иметь:
  - Ruby v.2.6.6
  - Foreman
  - Docker, docker-compose 
  - PostgreSQL
 
-Установка и запуск:
-1)bundle install
-2)gem install foreman
-3)docker-compose up
-4)rails db:migrate
-5)rails db:seed
-6)foreman start
+## Установка и запуск:
+ 1. bundle install
+ 2. gem install foreman
+ 3. docker-compose up
+ 4. rails db:migrate
+ 5. rails db:seed
+ 6. foreman start
 
 
+## Использование:
+**Для дневников**
+`localhost:5000/api/v1/diaries`
+`localhost:5000/api/v1/notes`
 
-
-Использование:
-localhost:5000/api/v1/diaries
-localhost:5000/api/v1/notes
-
-localhost:5000/api/v1/diary/1
-localhost:5000/api/v1/note/1
-
-
+**Для записей**
+`localhost:5000/api/v1/diary/1`
+`localhost:5000/api/v1/note/1`
 
 
 ---- заранее остановить редис и постгрес, если работает
