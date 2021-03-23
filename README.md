@@ -22,11 +22,11 @@
 
 `localhost:5000/api/v1/diaries`
 
-`localhost:5000/api/v1/diary/1`
+`localhost:5000/api/v1/diaries/1`
 
 **Для записей**
 
 `localhost:5000/api/v1/notes`
 
-`localhost:5000/api/v1/note/1`
+`localhost:5000/api/v1/notes/1`
 
