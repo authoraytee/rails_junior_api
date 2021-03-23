@@ -1,5 +1,5 @@
 # Rails Junior API
-![](https://img.shields.io/badge/ruby-v.2.6.6-#ff0000)  ![](https://img.shields.io/badge/rails-v.6.1.3-red) ![](https://img.shields.io/badge/-sidekiq-v.6.0.2-ffea00) ![](https://img.shields.io/badge/-docker-ff69b4) ![](https://img.shields.io/badge/-postgresql-00c3d9) ![](https://img.shields.io/badge/-redis-00c3d9)
+![](https://img.shields.io/badge/ruby-v.2.6.6-ff0000)  ![](https://img.shields.io/badge/rails-v.6.1.3-red) ![](https://img.shields.io/badge/-sidekiq-v.6.0.2-ffea00) ![](https://img.shields.io/badge/-docker-ff69b4) ![](https://img.shields.io/badge/-postgresql-00c3d9) ![](https://img.shields.io/badge/-redis-00c3d9)
 
 
 
