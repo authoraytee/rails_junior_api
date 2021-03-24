@@ -19,6 +19,12 @@ gem 'sidekiq'
 gem 'sidekiq-scheduler'
 gem 'sidekiq-unique-jobs'
 
+gem 'mockserver-client'
+gem 'rest-client'
+gem 'rspec'
+
+gem 'shoulda-matchers', '~> 4.0'
+
 gem 'bootsnap', '>= 1.4.4', require: false
 
 group :development, :test do

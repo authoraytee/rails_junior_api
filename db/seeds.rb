@@ -1,32 +1,30 @@
 # frozen_string_literal: true
 
-2.times do
+# Diary initialization 
+def diary_creator(time)
   Diary.create({
-                 title: Faker::Book.title,
-                 expiration: Faker::Date.forward(days: 10),
-                 kind: Faker::Number.between(from: 1, to: 2)
-               })
+    title: Faker::Book.title,
+    expiration: time,
+    kind: Faker::Number.between(from: 1, to: 2)
+  })
 end
 
 2.times do
-  Diary.create({
-                 title: Faker::Book.title,
-                 expiration: Time.now + 600,
-                 kind: Faker::Number.between(from: 1, to: 2)
-               })
+  diary_creator(Time.now+600)
+end
+2.times do
+  diary_creator(Faker::Date.forward(days: 3))
 end
 
-Note.create({
-              text: Faker::Book.title,
-              diary_id: 1
-            })
 
-Note.create({
-              text: Faker::Book.title,
-              diary_id: 2
-            })
+# Note initialization 
+diaries = Diary.all
+for diary in diaries
+  3.times do
+    Note.create({
+                  text: Faker::Book.title,
+                  diary_id: diary.id
+                })
+  end
+end
 
-Note.create({
-              text: Faker::Book.title,
-              diary_id: 3
-            })
