@@ -5232,3 +5232,39 @@ Processing by Api::V1::DiariesController#index as */*
 Completed 200 OK in 7ms (Views: 2.8ms | ActiveRecord: 1.6ms | Allocations: 1531)
 
 
+  [1m[36mDiary Load (1.3ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries"[0m
+  ↳ app/workers/expired_diaries_worker.rb:17:in `block in perform'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/workers/expired_diaries_worker.rb:19:in `block (2 levels) in perform'
+  [1m[36mNote Destroy (0.8ms)[0m  [1m[31mDELETE FROM "notes" WHERE "notes"."diary_id" = $1[0m  [["diary_id", 3]]
+  ↳ app/workers/expired_diaries_worker.rb:19:in `block (2 levels) in perform'
+  [1m[36mDiary Destroy (0.7ms)[0m  [1m[31mDELETE FROM "diaries" WHERE "diaries"."id" = $1[0m  [["id", 3]]
+  ↳ app/workers/expired_diaries_worker.rb:19:in `block (2 levels) in perform'
+  [1m[36mTRANSACTION (30.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/workers/expired_diaries_worker.rb:19:in `block (2 levels) in perform'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/workers/expired_diaries_worker.rb:19:in `block (2 levels) in perform'
+  [1m[36mNote Destroy (1.1ms)[0m  [1m[31mDELETE FROM "notes" WHERE "notes"."diary_id" = $1[0m  [["diary_id", 4]]
+  ↳ app/workers/expired_diaries_worker.rb:19:in `block (2 levels) in perform'
+  [1m[36mDiary Destroy (0.8ms)[0m  [1m[31mDELETE FROM "diaries" WHERE "diaries"."id" = $1[0m  [["id", 4]]
+  ↳ app/workers/expired_diaries_worker.rb:19:in `block (2 levels) in perform'
+  [1m[36mTRANSACTION (5.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/workers/expired_diaries_worker.rb:19:in `block (2 levels) in perform'
+  [1m[36mDiary Load (1.3ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries"[0m
+  ↳ app/workers/expired_diaries_worker.rb:17:in `block in perform'
+  [1m[36mDiary Load (1.2ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries"[0m
+  ↳ app/workers/expired_diaries_worker.rb:17:in `block in perform'
+  [1m[36mDiary Load (1.1ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries"[0m
+  ↳ app/workers/expired_diaries_worker.rb:17:in `block in perform'
+  [1m[36mDiary Load (0.9ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries"[0m
+  ↳ app/workers/expired_diaries_worker.rb:17:in `block in perform'
+  [1m[36mDiary Load (1.2ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries"[0m
+  ↳ app/workers/expired_diaries_worker.rb:17:in `block in perform'
+Started GET "/api/v1/diaries/" for ::1 at 2021-03-24 09:19:03 +0700
+  [1m[35m (2.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::DiariesController#index as HTML
+  [1m[36mDiary Load (5.9ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" ORDER BY created_at DESC[0m
+  ↳ app/controllers/api/v1/diaries_controller.rb:8:in `index'
+Completed 200 OK in 38ms (Views: 9.8ms | ActiveRecord: 16.3ms | Allocations: 7366)
+
+

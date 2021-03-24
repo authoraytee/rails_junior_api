@@ -5,9 +5,9 @@ class Diary < ApplicationRecord
   validates :title, presence: true
   validates :expiration, presence: true
 
-  #validates :kind, presence: true
+  # validates :kind, presence: true
   enum kind: {
-    yes_public: 2,
-    not_public: 1
+    for_all: 2,
+    personal: 1
   }
 end

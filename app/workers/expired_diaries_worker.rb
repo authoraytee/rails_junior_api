@@ -2,20 +2,18 @@
 
 require 'date'
 
+# Main worker class that removes diaries whose expiration is coming to an end
 class ExpiredDiariesWorker
   include Sidekiq::Worker
 
+  # Woker initializer
   def perform
-    Sidekiq.logger.info 'test'
-
     scheduler = Rufus::Scheduler.new
     scheduler.every '10min' do
-      time_now = Time.now.in_time_zone
-
       diaries = Diary.all
 
       diaries.each do |diary|
-        if diary.expiration <= time_now
+        if diary.expiration <= Time.now.in_time_zone
           diary.destroy
           puts 'Дневник ', diary.title, ' удален!'
         end

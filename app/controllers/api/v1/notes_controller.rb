@@ -2,6 +2,7 @@
 
 module Api
   module V1
+    # Main class for Notes API
     class NotesController < ApplicationController
       def index
         notes = Note.order('created_at DESC')
