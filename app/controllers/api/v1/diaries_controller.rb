@@ -38,6 +38,7 @@ module Api
         end
   
         private
+  
         def diary_params
           params.permit(:title, :expiration, :kind)
         end
