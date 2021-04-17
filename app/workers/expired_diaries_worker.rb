@@ -8,15 +8,12 @@ class ExpiredDiariesWorker
 
   # Woker initializer
   def perform
-    scheduler = Rufus::Scheduler.new
-    scheduler.every '10min' do
-      diaries = Diary.all
+    diaries = Diary.all
 
-      diaries.each do |diary|
-        if diary.expiration <= Time.now.in_time_zone
-          diary.destroy
-          puts 'Дневник ', diary.title, ' удален!'
-        end
+    diaries.each do |diary|
+      if diary.expiration <= Time.now.in_time_zone
+        diary.destroy
+        puts 'Дневник ', diary.title, ' удален!'
       end
     end
   end
