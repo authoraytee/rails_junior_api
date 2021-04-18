@@ -1,7 +1,5 @@
 # Why does it work badly
 
-Тестовое задание было выполнено удовлетворительно, основные недочеты:
-
 - Note has no link to the diary in the model
 - Expiration. Can be assigned only for private diaries - condition is not met
 - Validation of fields is not in the database
