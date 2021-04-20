@@ -1,8 +1,4 @@
 # Why does it work badly
 
-- Note has no link to the diary in the model
-- Expiration. Can be assigned only for private diaries - condition is not met
-- Validation of fields is not in the database
-- The deletion worker is fetching incorrectly. First, everything is loaded into memory, then it is filtered into it. It was necessary to use the capabilities of activerecord
 - The environment is not used, the data for entering the sidekick is stored in the code
 
