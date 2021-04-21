@@ -9818,3 +9818,955 @@ Processing by Api::V1::NotesController#index as */*
 Completed 200 OK in 16ms (Views: 10.4ms | ActiveRecord: 2.8ms | Allocations: 3646)
 
 
+  [1m[36mDiary Load (81.9ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries"[0m
+  ↳ app/workers/expired_diaries_worker.rb:13:in `perform'
+Started GET "/" for ::1 at 2021-04-20 10:10:03 +0700
+  [1m[35m (4.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/authoraytee/.asdf/installs/ruby/2.6.6/lib/ruby/gems/2.6.0/gems/railties-6.1.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/authoraytee/.asdf/installs/ruby/2.6.6/lib/ruby/gems/2.6.0/gems/railties-6.1.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 102.0ms | Allocations: 350)
+Completed 200 OK in 233ms (Views: 114.5ms | ActiveRecord: 0.0ms | Allocations: 2636)
+
+
+Started GET "/api/v1/diary" for ::1 at 2021-04-20 10:10:17 +0700
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/diary"):
+  
+Started GET "/api/v1/diary/" for ::1 at 2021-04-20 10:10:28 +0700
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/diary"):
+  
+Started GET "/api/v1/diaries/" for ::1 at 2021-04-20 10:10:41 +0700
+Processing by Api::V1::DiariesController#index as HTML
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.0ms | Allocations: 2820)
+
+
+  
+NoMethodError (undefined method `all?' for true:TrueClass):
+  
+app/models/diary.rb:9:in `<class:Diary>'
+app/models/diary.rb:3:in `<main>'
+app/controllers/api/v1/diaries_controller.rb:8:in `index'
+Started GET "/api/v1/notes/" for ::1 at 2021-04-20 10:10:53 +0700
+Processing by Api::V1::NotesController#index as HTML
+  [1m[36mNote Load (191.2ms)[0m  [1m[34mSELECT "notes".* FROM "notes" ORDER BY created_at DESC[0m
+  ↳ app/controllers/api/v1/notes_controller.rb:9:in `index'
+Completed 200 OK in 340ms (Views: 4.7ms | ActiveRecord: 191.2ms | Allocations: 2577)
+
+
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (20.8ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (404.9ms)[0m  [1m[35mDROP DATABASE IF EXISTS "api_junior"[0m
+  [1m[35m (0.8ms)[0m  [1m[35mDROP DATABASE IF EXISTS "api_junior"[0m
+  [1m[35m (1098.3ms)[0m  [1m[35mCREATE DATABASE "api_junior" ENCODING = 'unicode'[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE DATABASE "api_junior" ENCODING = 'unicode'[0m
+  [1m[35m (191.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (127.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3857707334040139755)[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateDiaries (20210317175347)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (162.2ms)[0m  [1m[35mCREATE TABLE "diaries" ("id" bigserial primary key, "title" character varying, "expiration" timestamp, "kind" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210317175347"]]
+  [1m[36mTRANSACTION (43.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateNotes (20210317184843)
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (107.5ms)[0m  [1m[35mCREATE TABLE "notes" ("id" bigserial primary key, "text" text, "diary_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_0bf58b9887"
+FOREIGN KEY ("diary_id")
+  REFERENCES "diaries" ("id")
+)[0m
+  [1m[35m (53.3ms)[0m  [1m[35mCREATE INDEX "index_notes_on_diary_id" ON "notes" ("diary_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210317184843"]]
+  [1m[36mTRANSACTION (38.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.9ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-04-20 03:11:21.882145"], ["updated_at", "2021-04-20 03:11:21.882145"]]
+  [1m[36mTRANSACTION (18.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT pg_advisory_unlock(3857707334040139755)[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/api/v1/notes/" for ::1 at 2021-04-20 10:11:35 +0700
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::NotesController#index as HTML
+  [1m[36mNote Load (1.9ms)[0m  [1m[34mSELECT "notes".* FROM "notes" ORDER BY created_at DESC[0m
+  ↳ app/controllers/api/v1/notes_controller.rb:9:in `index'
+Completed 200 OK in 15ms (Views: 1.8ms | ActiveRecord: 1.9ms | Allocations: 2428)
+
+
+Started GET "/api/v1/notes/" for ::1 at 2021-04-20 10:11:36 +0700
+Processing by Api::V1::NotesController#index as HTML
+  [1m[36mNote Load (1.7ms)[0m  [1m[34mSELECT "notes".* FROM "notes" ORDER BY created_at DESC[0m
+  ↳ app/controllers/api/v1/notes_controller.rb:9:in `index'
+Completed 200 OK in 7ms (Views: 2.0ms | ActiveRecord: 1.7ms | Allocations: 1047)
+
+
+Started GET "/api/v1/diaries/" for ::1 at 2021-04-20 10:11:41 +0700
+Processing by Api::V1::DiariesController#index as HTML
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms | Allocations: 2233)
+
+
+  
+NoMethodError (undefined method `all?' for true:TrueClass):
+  
+app/models/diary.rb:9:in `<class:Diary>'
+app/models/diary.rb:3:in `<main>'
+app/controllers/api/v1/diaries_controller.rb:8:in `index'
+  [1m[36mDiary Load (2.2ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries"[0m
+  ↳ app/workers/expired_diaries_worker.rb:13:in `perform'
+Started GET "/api/v1/diaries/" for ::1 at 2021-04-20 10:12:20 +0700
+Processing by Api::V1::DiariesController#index as HTML
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 1021)
+
+
+  
+SyntaxError (/home/authoraytee/Documents/Ruby/rails_junior_api/app/models/diary.rb:11: syntax error, unexpected end-of-input, expecting end):
+  
+app/models/diary.rb:11: syntax error, unexpected end-of-input, expecting end
+app/models/diary.rb:11: syntax error, unexpected end-of-input, expecting end
+app/models/diary.rb:11: syntax error, unexpected end-of-input, expecting end
+app/controllers/api/v1/diaries_controller.rb:8:in `index'
+Started GET "/api/v1/diaries/" for ::1 at 2021-04-20 10:12:22 +0700
+Processing by Api::V1::DiariesController#index as HTML
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 1031)
+
+
+  
+SyntaxError (/home/authoraytee/Documents/Ruby/rails_junior_api/app/models/diary.rb:11: syntax error, unexpected end-of-input, expecting end):
+  
+app/models/diary.rb:11: syntax error, unexpected end-of-input, expecting end
+app/models/diary.rb:11: syntax error, unexpected end-of-input, expecting end
+app/models/diary.rb:11: syntax error, unexpected end-of-input, expecting end
+app/controllers/api/v1/diaries_controller.rb:8:in `index'
+Started GET "/api/v1/diaries/" for ::1 at 2021-04-20 10:12:31 +0700
+Processing by Api::V1::DiariesController#index as HTML
+  [1m[36mDiary Load (1.5ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" ORDER BY created_at DESC[0m
+  ↳ app/controllers/api/v1/diaries_controller.rb:9:in `index'
+Completed 200 OK in 9ms (Views: 2.2ms | ActiveRecord: 1.5ms | Allocations: 2521)
+
+
+Started GET "/api/v1/diaries/" for ::1 at 2021-04-20 10:12:32 +0700
+Processing by Api::V1::DiariesController#index as HTML
+  [1m[36mDiary Load (5.1ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" ORDER BY created_at DESC[0m
+  ↳ app/controllers/api/v1/diaries_controller.rb:9:in `index'
+Completed 200 OK in 19ms (Views: 7.1ms | ActiveRecord: 5.1ms | Allocations: 1045)
+
+
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDiary Create (0.9ms)[0m  [1m[32mINSERT INTO "diaries" ("title", "expiration", "kind", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Infinite Jest"], ["expiration", "2021-04-20 03:22:43.603303"], ["kind", 2], ["created_at", "2021-04-20 03:12:44.431223"], ["updated_at", "2021-04-20 03:12:44.431223"]]
+  [1m[36mTRANSACTION (63.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDiary Create (1.2ms)[0m  [1m[32mINSERT INTO "diaries" ("title", "expiration", "kind", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Taming a Sea Horse"], ["expiration", "2021-04-20 03:22:44.501210"], ["kind", 2], ["created_at", "2021-04-20 03:12:44.502336"], ["updated_at", "2021-04-20 03:12:44.502336"]]
+  [1m[36mTRANSACTION (24.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDiary Create (1.2ms)[0m  [1m[32mINSERT INTO "diaries" ("title", "expiration", "kind", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "This Lime Tree Bower"], ["expiration", "2021-04-23 00:00:00"], ["kind", 2], ["created_at", "2021-04-20 03:12:44.538330"], ["updated_at", "2021-04-20 03:12:44.538330"]]
+  [1m[36mTRANSACTION (24.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDiary Create (1.2ms)[0m  [1m[32mINSERT INTO "diaries" ("title", "expiration", "kind", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Carrion Comfort"], ["expiration", "2021-04-23 00:00:00"], ["kind", 2], ["created_at", "2021-04-20 03:12:44.574007"], ["updated_at", "2021-04-20 03:12:44.574007"]]
+  [1m[36mTRANSACTION (24.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mDiary Load (1.1ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries"[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDiary Load (1.0ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mNote Create (2.4ms)[0m  [1m[32mINSERT INTO "notes" ("text", "diary_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Waiting for the Barbarians"], ["diary_id", 1], ["created_at", "2021-04-20 03:12:44.685056"], ["updated_at", "2021-04-20 03:12:44.685056"]]
+  [1m[36mTRANSACTION (39.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDiary Load (1.0ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mNote Create (1.4ms)[0m  [1m[32mINSERT INTO "notes" ("text", "diary_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "To a God Unknown"], ["diary_id", 1], ["created_at", "2021-04-20 03:12:44.745217"], ["updated_at", "2021-04-20 03:12:44.745217"]]
+  [1m[36mTRANSACTION (27.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDiary Load (1.1ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mNote Create (1.5ms)[0m  [1m[32mINSERT INTO "notes" ("text", "diary_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "No Highway"], ["diary_id", 1], ["created_at", "2021-04-20 03:12:44.791544"], ["updated_at", "2021-04-20 03:12:44.791544"]]
+  [1m[36mTRANSACTION (27.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDiary Load (1.1ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mNote Create (1.5ms)[0m  [1m[32mINSERT INTO "notes" ("text", "diary_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Absalom, Absalom!"], ["diary_id", 2], ["created_at", "2021-04-20 03:12:44.836546"], ["updated_at", "2021-04-20 03:12:44.836546"]]
+  [1m[36mTRANSACTION (29.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDiary Load (1.0ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mNote Create (1.5ms)[0m  [1m[32mINSERT INTO "notes" ("text", "diary_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "The Mermaids Singing"], ["diary_id", 2], ["created_at", "2021-04-20 03:12:44.883723"], ["updated_at", "2021-04-20 03:12:44.883723"]]
+  [1m[36mTRANSACTION (28.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDiary Load (1.2ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mNote Create (1.6ms)[0m  [1m[32mINSERT INTO "notes" ("text", "diary_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "In Death Ground"], ["diary_id", 2], ["created_at", "2021-04-20 03:12:44.931403"], ["updated_at", "2021-04-20 03:12:44.931403"]]
+  [1m[36mTRANSACTION (27.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDiary Load (0.9ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mNote Create (1.6ms)[0m  [1m[32mINSERT INTO "notes" ("text", "diary_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "The Daffodil Sky"], ["diary_id", 3], ["created_at", "2021-04-20 03:12:44.980187"], ["updated_at", "2021-04-20 03:12:44.980187"]]
+  [1m[36mTRANSACTION (25.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDiary Load (1.2ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mNote Create (1.8ms)[0m  [1m[32mINSERT INTO "notes" ("text", "diary_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "In Dubious Battle"], ["diary_id", 3], ["created_at", "2021-04-20 03:12:45.029960"], ["updated_at", "2021-04-20 03:12:45.029960"]]
+  [1m[36mTRANSACTION (32.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDiary Load (1.0ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mNote Create (1.2ms)[0m  [1m[32mINSERT INTO "notes" ("text", "diary_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Look to Windward"], ["diary_id", 3], ["created_at", "2021-04-20 03:12:45.084289"], ["updated_at", "2021-04-20 03:12:45.084289"]]
+  [1m[36mTRANSACTION (27.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDiary Load (0.6ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mNote Create (0.8ms)[0m  [1m[32mINSERT INTO "notes" ("text", "diary_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "The Last Enemy"], ["diary_id", 4], ["created_at", "2021-04-20 03:12:45.123747"], ["updated_at", "2021-04-20 03:12:45.123747"]]
+  [1m[36mTRANSACTION (26.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDiary Load (0.9ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mNote Create (1.3ms)[0m  [1m[32mINSERT INTO "notes" ("text", "diary_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "The Moon by Night"], ["diary_id", 4], ["created_at", "2021-04-20 03:12:45.163647"], ["updated_at", "2021-04-20 03:12:45.163647"]]
+  [1m[36mTRANSACTION (30.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDiary Load (1.0ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mNote Create (1.6ms)[0m  [1m[32mINSERT INTO "notes" ("text", "diary_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Of Human Bondage"], ["diary_id", 4], ["created_at", "2021-04-20 03:12:45.212654"], ["updated_at", "2021-04-20 03:12:45.212654"]]
+  [1m[36mTRANSACTION (28.3ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/api/v1/diaries/" for ::1 at 2021-04-20 10:12:50 +0700
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::DiariesController#index as HTML
+  [1m[36mDiary Load (2.7ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" ORDER BY created_at DESC[0m
+  ↳ app/controllers/api/v1/diaries_controller.rb:9:in `index'
+Completed 200 OK in 37ms (Views: 11.0ms | ActiveRecord: 13.9ms | Allocations: 7429)
+
+
+  [1m[36mDiary Load (1.2ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries"[0m
+  ↳ app/workers/expired_diaries_worker.rb:13:in `perform'
+Started GET "/api/v1/diaries/" for ::1 at 2021-04-20 10:12:55 +0700
+Processing by Api::V1::DiariesController#index as */*
+  [1m[36mDiary Load (1.3ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" ORDER BY created_at DESC[0m
+  ↳ app/controllers/api/v1/diaries_controller.rb:9:in `index'
+Completed 200 OK in 6ms (Views: 3.0ms | ActiveRecord: 1.3ms | Allocations: 1474)
+
+
+Started GET "/api/v1/notes/" for ::1 at 2021-04-20 10:13:20 +0700
+Processing by Api::V1::NotesController#index as */*
+  Parameters: {"note"=>{}}
+  [1m[36mNote Load (2.2ms)[0m  [1m[34mSELECT "notes".* FROM "notes" ORDER BY created_at DESC[0m
+  ↳ app/controllers/api/v1/notes_controller.rb:9:in `index'
+Completed 200 OK in 22ms (Views: 15.2ms | ActiveRecord: 9.0ms | Allocations: 4325)
+
+
+Started POST "/api/v1/notes/" for ::1 at 2021-04-20 10:13:44 +0700
+Processing by Api::V1::NotesController#create as */*
+  Parameters: {"text"=>"sdgksdghkdsgkhsdhgkjhsdhkgklsdg", "diary_id"=>1, "note"=>{"text"=>"sdgksdghkdsgkhsdhgkjhsdhkgklsdg", "diary_id"=>1}}
+[31mUnpermitted parameters: :text, :diary_id, :note[0m
+Completed 422 Unprocessable Entity in 216ms (Views: 211.0ms | ActiveRecord: 0.0ms | Allocations: 227770)
+
+
+Started POST "/api/v1/notes/" for ::1 at 2021-04-20 10:14:15 +0700
+Processing by Api::V1::NotesController#create as */*
+  Parameters: {"text"=>"sdgksdghkdsg", "diary_id"=>1, "note"=>{"text"=>"sdgksdghkdsg", "diary_id"=>1}}
+[31mUnpermitted parameters: :text, :diary_id, :note[0m
+Completed 422 Unprocessable Entity in 7ms (Views: 3.5ms | ActiveRecord: 0.0ms | Allocations: 2085)
+
+
+Started POST "/api/v1/notes/" for ::1 at 2021-04-20 10:14:16 +0700
+Processing by Api::V1::NotesController#create as */*
+  Parameters: {"text"=>"sdgksdghkdsg", "diary_id"=>1, "note"=>{"text"=>"sdgksdghkdsg", "diary_id"=>1}}
+[31mUnpermitted parameters: :text, :diary_id, :note[0m
+Completed 422 Unprocessable Entity in 12ms (Views: 3.7ms | ActiveRecord: 0.0ms | Allocations: 2093)
+
+
+Started POST "/api/v1/notes/" for ::1 at 2021-04-20 10:15:25 +0700
+Processing by Api::V1::NotesController#create as */*
+  Parameters: {"text"=>"sdgksdghkdsg", "diary_id"=>1, "note"=>{"text"=>"sdgksdghkdsg", "diary_id"=>1}}
+[31mUnpermitted parameters: :text, :diary_id, :note[0m
+Completed 422 Unprocessable Entity in 6ms (Views: 3.0ms | ActiveRecord: 0.0ms | Allocations: 2085)
+
+
+Started POST "/api/v1/notes/" for ::1 at 2021-04-20 10:15:26 +0700
+Processing by Api::V1::NotesController#create as */*
+  Parameters: {"text"=>"sdgksdghkdsg", "diary_id"=>1, "note"=>{"text"=>"sdgksdghkdsg", "diary_id"=>1}}
+[31mUnpermitted parameters: :text, :diary_id, :note[0m
+Completed 422 Unprocessable Entity in 8ms (Views: 4.7ms | ActiveRecord: 0.0ms | Allocations: 2085)
+
+
+Started POST "/api/v1/notes/" for ::1 at 2021-04-20 10:15:33 +0700
+Processing by Api::V1::NotesController#create as */*
+  Parameters: {"text"=>"sdgksdghkdsg", "diary_id"=>3, "note"=>{"text"=>"sdgksdghkdsg", "diary_id"=>3}}
+[31mUnpermitted parameters: :text, :diary_id, :note[0m
+Completed 422 Unprocessable Entity in 7ms (Views: 3.2ms | ActiveRecord: 0.0ms | Allocations: 2082)
+
+
+Started POST "/api/v1/notes/" for ::1 at 2021-04-20 10:15:36 +0700
+Processing by Api::V1::NotesController#create as */*
+  Parameters: {"text"=>"sdgksdghkdsg", "diary_id"=>6, "note"=>{"text"=>"sdgksdghkdsg", "diary_id"=>6}}
+[31mUnpermitted parameters: :text, :diary_id, :note[0m
+Completed 422 Unprocessable Entity in 7ms (Views: 3.6ms | ActiveRecord: 0.0ms | Allocations: 2082)
+
+
+Started POST "/api/v1/notes/" for ::1 at 2021-04-20 10:15:42 +0700
+Processing by Api::V1::NotesController#create as */*
+  Parameters: {"text"=>"sdgksdghkdsg", "diary_id"=>2, "note"=>{"text"=>"sdgksdghkdsg", "diary_id"=>2}}
+[31mUnpermitted parameters: :text, :diary_id, :note[0m
+Completed 422 Unprocessable Entity in 8ms (Views: 3.1ms | ActiveRecord: 0.0ms | Allocations: 2082)
+
+
+  [1m[36mDiary Load (2.1ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries"[0m
+  ↳ app/workers/expired_diaries_worker.rb:13:in `perform'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/workers/expired_diaries_worker.rb:15:in `block in perform'
+  [1m[36mNote Destroy (1.1ms)[0m  [1m[31mDELETE FROM "notes" WHERE "notes"."diary_id" = $1[0m  [["diary_id", 1]]
+  ↳ app/workers/expired_diaries_worker.rb:15:in `block in perform'
+  [1m[36mDiary Destroy (1.3ms)[0m  [1m[31mDELETE FROM "diaries" WHERE "diaries"."id" = $1[0m  [["id", 1]]
+  ↳ app/workers/expired_diaries_worker.rb:15:in `block in perform'
+  [1m[36mTRANSACTION (58.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/workers/expired_diaries_worker.rb:15:in `block in perform'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/workers/expired_diaries_worker.rb:15:in `block in perform'
+  [1m[36mNote Destroy (1.6ms)[0m  [1m[31mDELETE FROM "notes" WHERE "notes"."diary_id" = $1[0m  [["diary_id", 2]]
+  ↳ app/workers/expired_diaries_worker.rb:15:in `block in perform'
+  [1m[36mDiary Destroy (1.8ms)[0m  [1m[31mDELETE FROM "diaries" WHERE "diaries"."id" = $1[0m  [["id", 2]]
+  ↳ app/workers/expired_diaries_worker.rb:15:in `block in perform'
+  [1m[36mTRANSACTION (31.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/workers/expired_diaries_worker.rb:15:in `block in perform'
+  [1m[36mDiary Load (2.9ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries"[0m
+  ↳ app/workers/expired_diaries_worker.rb:13:in `perform'
+Started GET "/api/v1/notes/" for ::1 at 2021-04-20 10:55:52 +0700
+Processing by Api::V1::NotesController#index as */*
+  Parameters: {"note"=>{}}
+  [1m[36mNote Load (2.9ms)[0m  [1m[34mSELECT "notes".* FROM "notes" ORDER BY created_at DESC[0m
+  ↳ app/controllers/api/v1/notes_controller.rb:9:in `index'
+Completed 200 OK in 50ms (Views: 8.9ms | ActiveRecord: 29.5ms | Allocations: 4474)
+
+
+Started POST "/api/v1/notes/" for ::1 at 2021-04-20 10:56:05 +0700
+Processing by Api::V1::NotesController#create as */*
+  Parameters: {"text"=>"sdgksdghkdsg", "diary_id"=>2, "note"=>{"text"=>"sdgksdghkdsg", "diary_id"=>2}}
+[31mUnpermitted parameters: :text, :diary_id, :note[0m
+Completed 422 Unprocessable Entity in 6ms (Views: 2.7ms | ActiveRecord: 0.0ms | Allocations: 2082)
+
+
+Started POST "/api/v1/notes/" for ::1 at 2021-04-20 10:57:01 +0700
+Processing by Api::V1::NotesController#create as */*
+  Parameters: {"text"=>"sdgksdghkdsg", "diary_id"=>2, "note"=>{"text"=>"sdgksdghkdsg", "diary_id"=>2}}
+[31mUnpermitted parameter: :note[0m
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/notes_controller.rb:20:in `create'
+  [1m[36mDiary Load (1.4ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/notes_controller.rb:20:in `create'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/notes_controller.rb:20:in `create'
+Completed 422 Unprocessable Entity in 31ms (Views: 1.3ms | ActiveRecord: 19.7ms | Allocations: 9417)
+
+
+Started GET "/api/v1/diaries/" for ::1 at 2021-04-20 10:57:12 +0700
+Processing by Api::V1::DiariesController#index as */*
+  Parameters: {"diary"=>{}}
+  [1m[36mDiary Load (2.0ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" ORDER BY created_at DESC[0m
+  ↳ app/controllers/api/v1/diaries_controller.rb:9:in `index'
+Completed 200 OK in 13ms (Views: 10.5ms | ActiveRecord: 2.0ms | Allocations: 3700)
+
+
+Started POST "/api/v1/diaries/" for ::1 at 2021-04-20 10:57:23 +0700
+Processing by Api::V1::DiariesController#create as */*
+  Parameters: {"text"=>"sdgksdghkdsg", "diary_id"=>3, "diary"=>{}}
+[31mUnpermitted parameters: :text, :diary_id, :diary[0m
+Completed 422 Unprocessable Entity in 10ms (Views: 6.4ms | ActiveRecord: 0.0ms | Allocations: 1695)
+
+
+Started POST "/api/v1/notes/" for ::1 at 2021-04-20 10:57:32 +0700
+Processing by Api::V1::NotesController#create as */*
+  Parameters: {"text"=>"sdgksdghkdsg", "diary_id"=>3, "note"=>{"text"=>"sdgksdghkdsg", "diary_id"=>3}}
+[31mUnpermitted parameter: :note[0m
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/notes_controller.rb:20:in `create'
+  [1m[36mDiary Load (2.0ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/notes_controller.rb:20:in `create'
+  [1m[36mNote Create (1.9ms)[0m  [1m[32mINSERT INTO "notes" ("text", "diary_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "sdgksdghkdsg"], ["diary_id", 3], ["created_at", "2021-04-20 03:57:32.137407"], ["updated_at", "2021-04-20 03:57:32.137407"]]
+  ↳ app/controllers/api/v1/notes_controller.rb:20:in `create'
+  [1m[36mTRANSACTION (27.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/notes_controller.rb:20:in `create'
+Completed 200 OK in 48ms (Views: 0.5ms | ActiveRecord: 33.2ms | Allocations: 3783)
+
+
+Started GET "/api/v1/diaries/" for ::1 at 2021-04-20 11:01:48 +0700
+Processing by Api::V1::DiariesController#index as */*
+  Parameters: {"diary"=>{}}
+  [1m[36mDiary Load (2.1ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" ORDER BY created_at DESC[0m
+  ↳ app/controllers/api/v1/diaries_controller.rb:9:in `index'
+Completed 200 OK in 9ms (Views: 3.8ms | ActiveRecord: 2.1ms | Allocations: 1245)
+
+
+  [1m[36mDiary Load (0.6ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries"[0m
+  ↳ app/workers/expired_diaries_worker.rb:13:in `perform'
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (380.6ms)[0m  [1m[35mDROP DATABASE IF EXISTS "api_junior"[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP DATABASE IF EXISTS "api_junior"[0m
+  [1m[35m (906.1ms)[0m  [1m[35mCREATE DATABASE "api_junior" ENCODING = 'unicode'[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE DATABASE "api_junior" ENCODING = 'unicode'[0m
+  [1m[35m (242.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (128.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3857707334040139755)[0m
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateDiaries (20210317175347)
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (107.9ms)[0m  [1m[35mCREATE TABLE "diaries" ("id" bigserial primary key, "title" character varying, "expiration" timestamp, "kind" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210317175347"]]
+  [1m[36mTRANSACTION (28.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateNotes (20210317184843)
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (106.1ms)[0m  [1m[35mCREATE TABLE "notes" ("id" bigserial primary key, "text" text, "diary_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_0bf58b9887"
+FOREIGN KEY ("diary_id")
+  REFERENCES "diaries" ("id")
+)[0m
+  [1m[35m (58.6ms)[0m  [1m[35mCREATE INDEX "index_notes_on_diary_id" ON "notes" ("diary_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210317184843"]]
+  [1m[36mTRANSACTION (29.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-04-20 04:10:45.971861"], ["updated_at", "2021-04-20 04:10:45.971861"]]
+  [1m[36mTRANSACTION (31.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(3857707334040139755)[0m
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDiary Create (0.9ms)[0m  [1m[32mINSERT INTO "diaries" ("title", "expiration", "kind", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Look Homeward, Angel"], ["expiration", "2021-04-20 04:20:50.620231"], ["kind", 1], ["created_at", "2021-04-20 04:10:50.812241"], ["updated_at", "2021-04-20 04:10:50.812241"]]
+  [1m[36mTRANSACTION (26.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDiary Create (0.8ms)[0m  [1m[32mINSERT INTO "diaries" ("title", "expiration", "kind", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Unweaving the Rainbow"], ["expiration", "2021-04-20 04:20:50.843829"], ["kind", 1], ["created_at", "2021-04-20 04:10:50.844643"], ["updated_at", "2021-04-20 04:10:50.844643"]]
+  [1m[36mTRANSACTION (28.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDiary Create (1.1ms)[0m  [1m[32mINSERT INTO "diaries" ("title", "expiration", "kind", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Tirra Lirra by the River"], ["expiration", "2021-04-23 00:00:00"], ["kind", 1], ["created_at", "2021-04-20 04:10:50.881079"], ["updated_at", "2021-04-20 04:10:50.881079"]]
+  [1m[36mTRANSACTION (25.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDiary Create (1.2ms)[0m  [1m[32mINSERT INTO "diaries" ("title", "expiration", "kind", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "The Far-Distant Oxus"], ["expiration", "2021-04-23 00:00:00"], ["kind", 2], ["created_at", "2021-04-20 04:10:50.917185"], ["updated_at", "2021-04-20 04:10:50.917185"]]
+  [1m[36mTRANSACTION (24.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mDiary Load (1.3ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries"[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDiary Load (0.5ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mNote Create (1.2ms)[0m  [1m[32mINSERT INTO "notes" ("text", "diary_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Look Homeward, Angel"], ["diary_id", 1], ["created_at", "2021-04-20 04:10:50.988212"], ["updated_at", "2021-04-20 04:10:50.988212"]]
+  [1m[36mTRANSACTION (29.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDiary Load (0.5ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mNote Create (0.8ms)[0m  [1m[32mINSERT INTO "notes" ("text", "diary_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Brandy of the Damned"], ["diary_id", 1], ["created_at", "2021-04-20 04:10:51.027119"], ["updated_at", "2021-04-20 04:10:51.027119"]]
+  [1m[36mTRANSACTION (27.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDiary Load (1.1ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mNote Create (1.5ms)[0m  [1m[32mINSERT INTO "notes" ("text", "diary_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "The Monkey's Raincoat"], ["diary_id", 1], ["created_at", "2021-04-20 04:10:51.069632"], ["updated_at", "2021-04-20 04:10:51.069632"]]
+  [1m[36mTRANSACTION (28.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDiary Load (1.2ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mNote Create (1.5ms)[0m  [1m[32mINSERT INTO "notes" ("text", "diary_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "The Moon by Night"], ["diary_id", 2], ["created_at", "2021-04-20 04:10:51.116052"], ["updated_at", "2021-04-20 04:10:51.116052"]]
+  [1m[36mTRANSACTION (29.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDiary Load (0.9ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mNote Create (1.3ms)[0m  [1m[32mINSERT INTO "notes" ("text", "diary_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "The Glory and the Dream"], ["diary_id", 2], ["created_at", "2021-04-20 04:10:51.162960"], ["updated_at", "2021-04-20 04:10:51.162960"]]
+  [1m[36mTRANSACTION (29.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDiary Load (0.8ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mNote Create (0.9ms)[0m  [1m[32mINSERT INTO "notes" ("text", "diary_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Mr Standfast"], ["diary_id", 2], ["created_at", "2021-04-20 04:10:51.209659"], ["updated_at", "2021-04-20 04:10:51.209659"]]
+  [1m[36mTRANSACTION (31.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDiary Load (0.5ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mNote Create (0.7ms)[0m  [1m[32mINSERT INTO "notes" ("text", "diary_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Antic Hay"], ["diary_id", 3], ["created_at", "2021-04-20 04:10:51.250912"], ["updated_at", "2021-04-20 04:10:51.250912"]]
+  [1m[36mTRANSACTION (27.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDiary Load (1.0ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mNote Create (1.3ms)[0m  [1m[32mINSERT INTO "notes" ("text", "diary_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "No Longer at Ease"], ["diary_id", 3], ["created_at", "2021-04-20 04:10:51.293124"], ["updated_at", "2021-04-20 04:10:51.293124"]]
+  [1m[36mTRANSACTION (29.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDiary Load (1.1ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mNote Create (1.5ms)[0m  [1m[32mINSERT INTO "notes" ("text", "diary_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "The Wealth of Nations"], ["diary_id", 3], ["created_at", "2021-04-20 04:10:51.342173"], ["updated_at", "2021-04-20 04:10:51.342173"]]
+  [1m[36mTRANSACTION (26.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDiary Load (1.0ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mNote Create (1.3ms)[0m  [1m[32mINSERT INTO "notes" ("text", "diary_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Fair Stood the Wind for France"], ["diary_id", 4], ["created_at", "2021-04-20 04:10:51.386268"], ["updated_at", "2021-04-20 04:10:51.386268"]]
+  [1m[36mTRANSACTION (29.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDiary Load (0.8ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mNote Create (1.3ms)[0m  [1m[32mINSERT INTO "notes" ("text", "diary_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "A Confederacy of Dunces"], ["diary_id", 4], ["created_at", "2021-04-20 04:10:51.433853"], ["updated_at", "2021-04-20 04:10:51.433853"]]
+  [1m[36mTRANSACTION (28.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDiary Load (0.9ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mNote Create (1.3ms)[0m  [1m[32mINSERT INTO "notes" ("text", "diary_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "The Doors of Perception"], ["diary_id", 4], ["created_at", "2021-04-20 04:10:51.482234"], ["updated_at", "2021-04-20 04:10:51.482234"]]
+  [1m[36mTRANSACTION (27.5ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/api/v1/diaries/" for ::1 at 2021-04-20 11:10:58 +0700
+Processing by Api::V1::DiariesController#index as */*
+  Parameters: {"diary"=>{}}
+  [1m[36mDiary Load (2.0ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" ORDER BY created_at DESC[0m
+  ↳ app/controllers/api/v1/diaries_controller.rb:9:in `index'
+Completed 200 OK in 11ms (Views: 8.5ms | ActiveRecord: 11.4ms | Allocations: 4001)
+
+
+Started GET "/api/v1/diaries/" for ::1 at 2021-04-20 11:10:59 +0700
+Processing by Api::V1::DiariesController#index as */*
+  Parameters: {"diary"=>{}}
+  [1m[36mDiary Load (1.8ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" ORDER BY created_at DESC[0m
+  ↳ app/controllers/api/v1/diaries_controller.rb:9:in `index'
+Completed 200 OK in 8ms (Views: 3.5ms | ActiveRecord: 1.8ms | Allocations: 1457)
+
+
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (353.3ms)[0m  [1m[35mDROP DATABASE IF EXISTS "api_junior"[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP DATABASE IF EXISTS "api_junior"[0m
+  [1m[35m (933.6ms)[0m  [1m[35mCREATE DATABASE "api_junior" ENCODING = 'unicode'[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE DATABASE "api_junior" ENCODING = 'unicode'[0m
+  [1m[35m (160.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (128.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3857707334040139755)[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateDiaries (20210317175347)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (104.0ms)[0m  [1m[35mCREATE TABLE "diaries" ("id" bigserial primary key, "title" character varying, "expiration" timestamp, "kind" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210317175347"]]
+  [1m[36mTRANSACTION (24.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateNotes (20210317184843)
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (106.3ms)[0m  [1m[35mCREATE TABLE "notes" ("id" bigserial primary key, "text" text, "diary_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_0bf58b9887"
+FOREIGN KEY ("diary_id")
+  REFERENCES "diaries" ("id")
+)[0m
+  [1m[35m (54.0ms)[0m  [1m[35mCREATE INDEX "index_notes_on_diary_id" ON "notes" ("diary_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210317184843"]]
+  [1m[36mTRANSACTION (25.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-04-20 04:12:58.781567"], ["updated_at", "2021-04-20 04:12:58.781567"]]
+  [1m[36mTRANSACTION (29.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(3857707334040139755)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDiary Create (0.9ms)[0m  [1m[32mINSERT INTO "diaries" ("title", "expiration", "kind", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "The Mirror Crack'd from Side to Side"], ["expiration", "2021-04-20 04:23:03.154005"], ["kind", 2], ["created_at", "2021-04-20 04:13:03.361466"], ["updated_at", "2021-04-20 04:13:03.361466"]]
+  [1m[36mTRANSACTION (32.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDiary Create (1.1ms)[0m  [1m[32mINSERT INTO "diaries" ("title", "expiration", "kind", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "The Millstone"], ["expiration", "2021-04-20 04:23:03.400979"], ["kind", 2], ["created_at", "2021-04-20 04:13:03.402103"], ["updated_at", "2021-04-20 04:13:03.402103"]]
+  [1m[36mTRANSACTION (34.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDiary Create (1.2ms)[0m  [1m[32mINSERT INTO "diaries" ("title", "expiration", "kind", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Cabbages and Kings"], ["expiration", "2021-04-21 00:00:00"], ["kind", 1], ["created_at", "2021-04-20 04:13:03.449320"], ["updated_at", "2021-04-20 04:13:03.449320"]]
+  [1m[36mTRANSACTION (33.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDiary Create (1.6ms)[0m  [1m[32mINSERT INTO "diaries" ("title", "expiration", "kind", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "What's Become of Waring"], ["expiration", "2021-04-23 00:00:00"], ["kind", 1], ["created_at", "2021-04-20 04:13:03.494915"], ["updated_at", "2021-04-20 04:13:03.494915"]]
+  [1m[36mTRANSACTION (33.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mDiary Load (1.3ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries"[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDiary Load (0.9ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mNote Create (1.8ms)[0m  [1m[32mINSERT INTO "notes" ("text", "diary_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Arms and the Man"], ["diary_id", 1], ["created_at", "2021-04-20 04:13:03.587652"], ["updated_at", "2021-04-20 04:13:03.587652"]]
+  [1m[36mTRANSACTION (26.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDiary Load (0.7ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mNote Create (1.0ms)[0m  [1m[32mINSERT INTO "notes" ("text", "diary_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "A Glass of Blessings"], ["diary_id", 1], ["created_at", "2021-04-20 04:13:03.626919"], ["updated_at", "2021-04-20 04:13:03.626919"]]
+  [1m[36mTRANSACTION (24.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDiary Load (1.0ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mNote Create (1.4ms)[0m  [1m[32mINSERT INTO "notes" ("text", "diary_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "An Instant In The Wind"], ["diary_id", 1], ["created_at", "2021-04-20 04:13:03.667104"], ["updated_at", "2021-04-20 04:13:03.667104"]]
+  [1m[36mTRANSACTION (29.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDiary Load (1.0ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mNote Create (1.4ms)[0m  [1m[32mINSERT INTO "notes" ("text", "diary_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "By Grand Central Station I Sat Down and Wept"], ["diary_id", 2], ["created_at", "2021-04-20 04:13:03.715299"], ["updated_at", "2021-04-20 04:13:03.715299"]]
+  [1m[36mTRANSACTION (27.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDiary Load (1.0ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mNote Create (1.6ms)[0m  [1m[32mINSERT INTO "notes" ("text", "diary_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "A Confederacy of Dunces"], ["diary_id", 2], ["created_at", "2021-04-20 04:13:03.761983"], ["updated_at", "2021-04-20 04:13:03.761983"]]
+  [1m[36mTRANSACTION (27.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDiary Load (0.9ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mNote Create (1.4ms)[0m  [1m[32mINSERT INTO "notes" ("text", "diary_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Dance Dance Dance"], ["diary_id", 2], ["created_at", "2021-04-20 04:13:03.807162"], ["updated_at", "2021-04-20 04:13:03.807162"]]
+  [1m[36mTRANSACTION (32.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDiary Load (0.8ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mNote Create (1.6ms)[0m  [1m[32mINSERT INTO "notes" ("text", "diary_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "In Dubious Battle"], ["diary_id", 3], ["created_at", "2021-04-20 04:13:03.856054"], ["updated_at", "2021-04-20 04:13:03.856054"]]
+  [1m[36mTRANSACTION (30.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDiary Load (1.0ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mNote Create (1.4ms)[0m  [1m[32mINSERT INTO "notes" ("text", "diary_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "From Here to Eternity"], ["diary_id", 3], ["created_at", "2021-04-20 04:13:03.904544"], ["updated_at", "2021-04-20 04:13:03.904544"]]
+  [1m[36mTRANSACTION (28.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDiary Load (0.8ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mNote Create (1.3ms)[0m  [1m[32mINSERT INTO "notes" ("text", "diary_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Beyond the Mexique Bay"], ["diary_id", 3], ["created_at", "2021-04-20 04:13:03.949912"], ["updated_at", "2021-04-20 04:13:03.949912"]]
+  [1m[36mTRANSACTION (29.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDiary Load (0.9ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mNote Create (1.3ms)[0m  [1m[32mINSERT INTO "notes" ("text", "diary_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "The Moving Finger"], ["diary_id", 4], ["created_at", "2021-04-20 04:13:03.996970"], ["updated_at", "2021-04-20 04:13:03.996970"]]
+  [1m[36mTRANSACTION (30.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDiary Load (0.9ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mNote Create (1.3ms)[0m  [1m[32mINSERT INTO "notes" ("text", "diary_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "A Monstrous Regiment of Women"], ["diary_id", 4], ["created_at", "2021-04-20 04:13:04.044378"], ["updated_at", "2021-04-20 04:13:04.044378"]]
+  [1m[36mTRANSACTION (30.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDiary Load (0.9ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mNote Create (1.3ms)[0m  [1m[32mINSERT INTO "notes" ("text", "diary_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Everything is Illuminated"], ["diary_id", 4], ["created_at", "2021-04-20 04:13:04.091905"], ["updated_at", "2021-04-20 04:13:04.091905"]]
+  [1m[36mTRANSACTION (29.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mDiary Load (0.9ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."kind" = $1 AND (expiration <= '2021-04-20 04:13:10.272106') /* loading for inspect */ LIMIT $2[0m  [["kind", 1], ["LIMIT", 11]]
+  [1m[36mDiary Load (0.6ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."kind" = $1 AND (expiration <= '2021-04-20 04:13:10.272106') /* loading for inspect */ LIMIT $2[0m  [["kind", 1], ["LIMIT", 11]]
+Started GET "/api/v1/diaries/" for ::1 at 2021-04-20 11:13:16 +0700
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::DiariesController#index as */*
+  Parameters: {"diary"=>{}}
+  [1m[36mDiary Load (1.7ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" ORDER BY created_at DESC[0m
+  ↳ app/controllers/api/v1/diaries_controller.rb:9:in `index'
+Completed 200 OK in 20ms (Views: 8.7ms | ActiveRecord: 9.7ms | Allocations: 4594)
+
+
+Started GET "/api/v1/diaries/" for ::1 at 2021-04-20 11:13:16 +0700
+Processing by Api::V1::DiariesController#index as */*
+  Parameters: {"diary"=>{}}
+  [1m[36mDiary Load (1.5ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" ORDER BY created_at DESC[0m
+  ↳ app/controllers/api/v1/diaries_controller.rb:9:in `index'
+Completed 200 OK in 8ms (Views: 3.4ms | ActiveRecord: 1.5ms | Allocations: 1474)
+
+
+  [1m[36mDiary Load (1.5ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."kind" = $1 AND (expiration <= '2021-04-20 04:13:39.175795') /* loading for inspect */ LIMIT $2[0m  [["kind", 1], ["LIMIT", 11]]
+  [1m[36mDiary Load (0.7ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."kind" = $1 AND (expiration <= '2021-04-20 04:13:39.175795') /* loading for inspect */ LIMIT $2[0m  [["kind", 1], ["LIMIT", 11]]
+  [1m[36mDiary Load (1.8ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."kind" = $1 AND (expiration <= '2021-04-20 04:14:23.295948') /* loading for inspect */ LIMIT $2[0m  [["kind", 1], ["LIMIT", 11]]
+  [1m[36mDiary Load (0.7ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."kind" = $1 AND (expiration <= '2021-04-20 04:14:23.295948') /* loading for inspect */ LIMIT $2[0m  [["kind", 1], ["LIMIT", 11]]
+  [1m[36mDiary Load (1.0ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."kind" = $1 AND (expiration <= '2021-04-20 04:15:12.964269') /* loading for inspect */ LIMIT $2[0m  [["kind", 1], ["LIMIT", 11]]
+  [1m[36mDiary Load (0.6ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."kind" = $1 AND (expiration <= '2021-04-20 04:15:12.964269') /* loading for inspect */ LIMIT $2[0m  [["kind", 1], ["LIMIT", 11]]
+  [1m[36mDiary Load (0.9ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."kind" = $1 AND (expiration <= '2021-04-20 04:17:18.102099') /* loading for inspect */ LIMIT $2[0m  [["kind", 1], ["LIMIT", 11]]
+  [1m[36mDiary Load (0.6ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."kind" = $1 AND (expiration <= '2021-04-20 04:17:18.102099') /* loading for inspect */ LIMIT $2[0m  [["kind", 1], ["LIMIT", 11]]
+Started GET "/api/v1/diaries/" for ::1 at 2021-04-20 11:19:29 +0700
+Processing by Api::V1::DiariesController#index as */*
+  Parameters: {"diary"=>{}}
+  [1m[36mDiary Load (3.0ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" ORDER BY created_at DESC[0m
+  ↳ app/controllers/api/v1/diaries_controller.rb:9:in `index'
+Completed 200 OK in 28ms (Views: 3.4ms | ActiveRecord: 15.5ms | Allocations: 4405)
+
+
+Started GET "/api/v1/diaries/" for ::1 at 2021-04-20 11:19:30 +0700
+Processing by Api::V1::DiariesController#index as */*
+  Parameters: {"diary"=>{}}
+  [1m[36mDiary Load (2.5ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" ORDER BY created_at DESC[0m
+  ↳ app/controllers/api/v1/diaries_controller.rb:9:in `index'
+Completed 200 OK in 10ms (Views: 4.8ms | ActiveRecord: 2.5ms | Allocations: 1474)
+
+
+Started GET "/api/v1/diaries/" for ::1 at 2021-04-20 11:19:30 +0700
+Processing by Api::V1::DiariesController#index as */*
+  Parameters: {"diary"=>{}}
+  [1m[36mDiary Load (1.5ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" ORDER BY created_at DESC[0m
+  ↳ app/controllers/api/v1/diaries_controller.rb:9:in `index'
+Completed 200 OK in 7ms (Views: 2.8ms | ActiveRecord: 1.5ms | Allocations: 1457)
+
+
+Started GET "/api/v1/diaries/" for ::1 at 2021-04-20 11:19:31 +0700
+Processing by Api::V1::DiariesController#index as */*
+  Parameters: {"diary"=>{}}
+  [1m[36mDiary Load (3.3ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" ORDER BY created_at DESC[0m
+  ↳ app/controllers/api/v1/diaries_controller.rb:9:in `index'
+Completed 200 OK in 12ms (Views: 5.2ms | ActiveRecord: 3.3ms | Allocations: 1457)
+
+
+Started GET "/api/v1/diaries/" for ::1 at 2021-04-20 11:19:31 +0700
+Processing by Api::V1::DiariesController#index as */*
+  Parameters: {"diary"=>{}}
+  [1m[36mDiary Load (2.8ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" ORDER BY created_at DESC[0m
+  ↳ app/controllers/api/v1/diaries_controller.rb:9:in `index'
+Completed 200 OK in 8ms (Views: 2.7ms | ActiveRecord: 2.8ms | Allocations: 1457)
+
+
+Started GET "/api/v1/diaries/" for ::1 at 2021-04-20 11:19:31 +0700
+Processing by Api::V1::DiariesController#index as */*
+  Parameters: {"diary"=>{}}
+  [1m[36mDiary Load (3.1ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" ORDER BY created_at DESC[0m
+  ↳ app/controllers/api/v1/diaries_controller.rb:9:in `index'
+Completed 200 OK in 10ms (Views: 3.8ms | ActiveRecord: 3.1ms | Allocations: 1474)
+
+
+Started GET "/api/v1/diaries/" for ::1 at 2021-04-20 11:19:31 +0700
+Processing by Api::V1::DiariesController#index as */*
+  Parameters: {"diary"=>{}}
+  [1m[36mDiary Load (1.4ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" ORDER BY created_at DESC[0m
+  ↳ app/controllers/api/v1/diaries_controller.rb:9:in `index'
+Completed 200 OK in 7ms (Views: 2.9ms | ActiveRecord: 1.4ms | Allocations: 1457)
+
+
+Started GET "/api/v1/diaries/" for ::1 at 2021-04-20 11:19:31 +0700
+Processing by Api::V1::DiariesController#index as */*
+  Parameters: {"diary"=>{}}
+  [1m[36mDiary Load (2.2ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" ORDER BY created_at DESC[0m
+  ↳ app/controllers/api/v1/diaries_controller.rb:9:in `index'
+Completed 200 OK in 9ms (Views: 3.9ms | ActiveRecord: 2.2ms | Allocations: 1457)
+
+
+Started GET "/api/v1/diaries/" for ::1 at 2021-04-20 11:19:31 +0700
+Processing by Api::V1::DiariesController#index as */*
+  Parameters: {"diary"=>{}}
+  [1m[36mDiary Load (2.1ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" ORDER BY created_at DESC[0m
+  ↳ app/controllers/api/v1/diaries_controller.rb:9:in `index'
+Completed 200 OK in 9ms (Views: 4.8ms | ActiveRecord: 2.1ms | Allocations: 1457)
+
+
+Started GET "/api/v1/diaries/" for ::1 at 2021-04-20 11:20:57 +0700
+Processing by Api::V1::DiariesController#index as */*
+  Parameters: {"diary"=>{}}
+  [1m[36mDiary Load (3.4ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" ORDER BY created_at DESC[0m
+  ↳ app/controllers/api/v1/diaries_controller.rb:9:in `index'
+Completed 200 OK in 18ms (Views: 5.6ms | ActiveRecord: 3.4ms | Allocations: 1457)
+
+
+Started GET "/api/v1/diaries/" for ::1 at 2021-04-20 11:21:44 +0700
+Processing by Api::V1::DiariesController#index as */*
+  Parameters: {"diary"=>{}}
+  [1m[36mDiary Load (2.1ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" ORDER BY created_at DESC[0m
+  ↳ app/controllers/api/v1/diaries_controller.rb:9:in `index'
+Completed 200 OK in 8ms (Views: 3.3ms | ActiveRecord: 2.1ms | Allocations: 1457)
+
+
+  [1m[36mDiary Load (0.7ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."kind" = $1 AND (expiration <= '2021-04-20 04:23:10.093307') /* loading for inspect */ LIMIT $2[0m  [["kind", 1], ["LIMIT", 11]]
+  [1m[36mDiary Load (0.6ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."kind" = $1 AND (expiration <= '2021-04-20 04:23:10.093307') /* loading for inspect */ LIMIT $2[0m  [["kind", 1], ["LIMIT", 11]]
+  [1m[36mDiary Load (1.0ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."kind" = $1 AND (expiration <= '2021-04-20 04:23:23.592709') /* loading for inspect */ LIMIT $2[0m  [["kind", 1], ["LIMIT", 11]]
+  [1m[36mDiary Load (0.6ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."kind" = $1 AND (expiration <= '2021-04-20 04:23:23.592709') /* loading for inspect */ LIMIT $2[0m  [["kind", 1], ["LIMIT", 11]]
+  [1m[36mDiary Load (2.4ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."kind" = $1 AND (expiration <= '2021-04-20 04:23:52.005565') /* loading for inspect */ LIMIT $2[0m  [["kind", 1], ["LIMIT", 11]]
+  [1m[36mDiary Load (0.7ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."kind" = $1 AND (expiration <= '2021-04-20 04:23:52.005565') /* loading for inspect */ LIMIT $2[0m  [["kind", 1], ["LIMIT", 11]]
+  [1m[36mDiary Load (1.5ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."kind" = $1 AND (expiration <= '2021-04-20 04:24:18.408535') /* loading for inspect */ LIMIT $2[0m  [["kind", 1], ["LIMIT", 11]]
+  [1m[36mDiary Load (1.1ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."kind" = $1 AND (expiration <= '2021-04-20 04:24:18.408535') /* loading for inspect */ LIMIT $2[0m  [["kind", 1], ["LIMIT", 11]]
+Started GET "/api/v1/diaries/" for ::1 at 2021-04-20 11:25:24 +0700
+Processing by Api::V1::DiariesController#index as */*
+  Parameters: {"diary"=>{}}
+  [1m[36mDiary Load (3.1ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" ORDER BY created_at DESC[0m
+  ↳ app/controllers/api/v1/diaries_controller.rb:9:in `index'
+Completed 200 OK in 10ms (Views: 4.3ms | ActiveRecord: 3.1ms | Allocations: 1457)
+
+
+Started GET "/api/v1/diaries/" for ::1 at 2021-04-20 11:25:25 +0700
+Processing by Api::V1::DiariesController#index as */*
+  Parameters: {"diary"=>{}}
+  [1m[36mDiary Load (1.4ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" ORDER BY created_at DESC[0m
+  ↳ app/controllers/api/v1/diaries_controller.rb:9:in `index'
+Completed 200 OK in 7ms (Views: 3.3ms | ActiveRecord: 1.4ms | Allocations: 1457)
+
+
+Started GET "/api/v1/diaries/" for ::1 at 2021-04-20 11:25:25 +0700
+Processing by Api::V1::DiariesController#index as */*
+  Parameters: {"diary"=>{}}
+  [1m[36mDiary Load (1.3ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" ORDER BY created_at DESC[0m
+  ↳ app/controllers/api/v1/diaries_controller.rb:9:in `index'
+Completed 200 OK in 6ms (Views: 3.0ms | ActiveRecord: 1.3ms | Allocations: 1457)
+
+
+Started GET "/api/v1/diaries/" for ::1 at 2021-04-20 11:25:25 +0700
+Processing by Api::V1::DiariesController#index as */*
+  Parameters: {"diary"=>{}}
+  [1m[36mDiary Load (3.0ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" ORDER BY created_at DESC[0m
+  ↳ app/controllers/api/v1/diaries_controller.rb:9:in `index'
+Completed 200 OK in 12ms (Views: 5.4ms | ActiveRecord: 3.0ms | Allocations: 1457)
+
+
+  [1m[36mDiary Load (2.5ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."kind" = $1 AND (expiration <= '2021-04-20 04:25:33.219850') /* loading for inspect */ LIMIT $2[0m  [["kind", 1], ["LIMIT", 11]]
+  [1m[36mDiary Load (1.6ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."kind" = $1 AND (expiration <= '2021-04-20 04:25:33.219850') /* loading for inspect */ LIMIT $2[0m  [["kind", 1], ["LIMIT", 11]]
+Started GET "/api/v1/diaries/" for ::1 at 2021-04-20 11:27:40 +0700
+Processing by Api::V1::DiariesController#index as */*
+  Parameters: {"diary"=>{}}
+  [1m[36mDiary Load (1.5ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" ORDER BY created_at DESC[0m
+  ↳ app/controllers/api/v1/diaries_controller.rb:9:in `index'
+Completed 200 OK in 15ms (Views: 9.1ms | ActiveRecord: 10.2ms | Allocations: 4157)
+
+
+Started GET "/api/v1/diaries/" for ::1 at 2021-04-20 11:27:40 +0700
+Processing by Api::V1::DiariesController#index as */*
+  Parameters: {"diary"=>{}}
+  [1m[36mDiary Load (1.3ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" ORDER BY created_at DESC[0m
+  ↳ app/controllers/api/v1/diaries_controller.rb:9:in `index'
+Completed 200 OK in 6ms (Views: 2.8ms | ActiveRecord: 1.3ms | Allocations: 1457)
+
+
+  [1m[36mDiary Load (0.7ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."kind" = $1 AND (expiration <= '2021-04-20 04:27:50.245614')[0m  [["kind", 1]]
+  ↳ app/workers/expired_diaries_worker.rb:16:in `perform'
+Started GET "/api/v1/diaries/" for ::1 at 2021-04-20 11:27:50 +0700
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::DiariesController#index as */*
+  Parameters: {"diary"=>{}}
+  [1m[36mDiary Load (2.3ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" ORDER BY created_at DESC[0m
+  ↳ app/controllers/api/v1/diaries_controller.rb:9:in `index'
+Completed 200 OK in 20ms (Views: 7.1ms | ActiveRecord: 10.0ms | Allocations: 4594)
+
+
+Started GET "/api/v1/diaries/" for ::1 at 2021-04-20 11:27:51 +0700
+Processing by Api::V1::DiariesController#index as */*
+  Parameters: {"diary"=>{}}
+  [1m[36mDiary Load (2.0ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" ORDER BY created_at DESC[0m
+  ↳ app/controllers/api/v1/diaries_controller.rb:9:in `index'
+Completed 200 OK in 7ms (Views: 3.0ms | ActiveRecord: 2.0ms | Allocations: 1474)
+
+
+  [1m[36mDiary Load (4.3ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."kind" = $1 AND (expiration <= '2021-04-20 04:29:01.771132')[0m  [["kind", 1]]
+  ↳ app/workers/expired_diaries_worker.rb:16:in `perform'
+Started GET "/api/v1/diaries/" for ::1 at 2021-04-20 11:29:24 +0700
+Processing by Api::V1::DiariesController#index as */*
+  Parameters: {"diary"=>{}}
+  [1m[36mDiary Load (1.7ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" ORDER BY created_at DESC[0m
+  ↳ app/controllers/api/v1/diaries_controller.rb:9:in `index'
+Completed 200 OK in 13ms (Views: 7.1ms | ActiveRecord: 8.0ms | Allocations: 4129)
+
+
+Started GET "/api/v1/diaries/" for ::1 at 2021-04-20 11:29:24 +0700
+Processing by Api::V1::DiariesController#index as */*
+  Parameters: {"diary"=>{}}
+  [1m[36mDiary Load (1.9ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" ORDER BY created_at DESC[0m
+  ↳ app/controllers/api/v1/diaries_controller.rb:9:in `index'
+Completed 200 OK in 8ms (Views: 3.6ms | ActiveRecord: 1.9ms | Allocations: 1474)
+
+
+Started GET "/api/v1/diaries/" for ::1 at 2021-04-20 11:29:58 +0700
+Processing by Api::V1::DiariesController#index as */*
+  Parameters: {"diary"=>{}}
+  [1m[36mDiary Load (2.5ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" ORDER BY created_at DESC[0m
+  ↳ app/controllers/api/v1/diaries_controller.rb:9:in `index'
+Completed 200 OK in 8ms (Views: 3.4ms | ActiveRecord: 2.5ms | Allocations: 1457)
+
+
+Started GET "/api/v1/diaries/" for ::1 at 2021-04-20 11:30:26 +0700
+Processing by Api::V1::DiariesController#index as */*
+  Parameters: {"diary"=>{}}
+  [1m[36mDiary Load (1.4ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" ORDER BY created_at DESC[0m
+  ↳ app/controllers/api/v1/diaries_controller.rb:9:in `index'
+Completed 200 OK in 7ms (Views: 3.3ms | ActiveRecord: 1.4ms | Allocations: 1457)
+
+
+Started GET "/api/v1/diaries/" for ::1 at 2021-04-20 11:30:27 +0700
+Processing by Api::V1::DiariesController#index as */*
+  Parameters: {"diary"=>{}}
+  [1m[36mDiary Load (2.0ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" ORDER BY created_at DESC[0m
+  ↳ app/controllers/api/v1/diaries_controller.rb:9:in `index'
+Completed 200 OK in 8ms (Views: 3.6ms | ActiveRecord: 2.0ms | Allocations: 1474)
+
+
+Started GET "/api/v1/diaries/" for ::1 at 2021-04-20 11:30:27 +0700
+Processing by Api::V1::DiariesController#index as */*
+  Parameters: {"diary"=>{}}
+  [1m[36mDiary Load (1.3ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" ORDER BY created_at DESC[0m
+  ↳ app/controllers/api/v1/diaries_controller.rb:9:in `index'
+Completed 200 OK in 6ms (Views: 2.9ms | ActiveRecord: 1.3ms | Allocations: 1457)
+
+
+Started GET "/api/v1/diaries/" for ::1 at 2021-04-20 11:30:27 +0700
+Processing by Api::V1::DiariesController#index as */*
+  Parameters: {"diary"=>{}}
+  [1m[36mDiary Load (2.4ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" ORDER BY created_at DESC[0m
+  ↳ app/controllers/api/v1/diaries_controller.rb:9:in `index'
+Completed 200 OK in 9ms (Views: 3.8ms | ActiveRecord: 2.4ms | Allocations: 1457)
+
+
+Started GET "/api/v1/diaries/" for ::1 at 2021-04-20 11:32:21 +0700
+Processing by Api::V1::DiariesController#index as */*
+  Parameters: {"diary"=>{}}
+  [1m[36mDiary Load (1.6ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" ORDER BY created_at DESC[0m
+  ↳ app/controllers/api/v1/diaries_controller.rb:9:in `index'
+Completed 200 OK in 13ms (Views: 6.9ms | ActiveRecord: 10.1ms | Allocations: 4157)
+
+
+Started GET "/api/v1/diaries/" for ::1 at 2021-04-20 11:33:37 +0700
+Processing by Api::V1::DiariesController#index as */*
+  Parameters: {"diary"=>{}}
+  [1m[36mDiary Load (2.0ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" ORDER BY created_at DESC[0m
+  ↳ app/controllers/api/v1/diaries_controller.rb:9:in `index'
+Completed 200 OK in 12ms (Views: 4.6ms | ActiveRecord: 2.0ms | Allocations: 1457)
+
+
+  [1m[36mDiary Load (0.5ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."kind" = $1 AND (expiration <= '2021-04-20 04:34:30.197273')[0m  [["kind", 1]]
+  ↳ app/workers/expired_diaries_worker.rb:15:in `perform'
+Started GET "/api/v1/diaries/" for ::1 at 2021-04-20 11:34:38 +0700
+Processing by Api::V1::DiariesController#index as */*
+  Parameters: {"diary"=>{}}
+  [1m[36mDiary Load (1.5ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" ORDER BY created_at DESC[0m
+  ↳ app/controllers/api/v1/diaries_controller.rb:9:in `index'
+Completed 200 OK in 8ms (Views: 3.9ms | ActiveRecord: 1.5ms | Allocations: 1457)
+
+
+Started GET "/api/v1/diaries/" for ::1 at 2021-04-20 11:34:39 +0700
+Processing by Api::V1::DiariesController#index as */*
+  Parameters: {"diary"=>{}}
+  [1m[36mDiary Load (2.9ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" ORDER BY created_at DESC[0m
+  ↳ app/controllers/api/v1/diaries_controller.rb:9:in `index'
+Completed 200 OK in 12ms (Views: 5.5ms | ActiveRecord: 2.9ms | Allocations: 1457)
+
+
+Started GET "/api/v1/diaries/" for ::1 at 2021-04-20 11:35:15 +0700
+Processing by Api::V1::DiariesController#index as */*
+  Parameters: {"diary"=>{}}
+  [1m[36mDiary Load (1.3ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" ORDER BY created_at DESC[0m
+  ↳ app/controllers/api/v1/diaries_controller.rb:9:in `index'
+Completed 200 OK in 13ms (Views: 7.2ms | ActiveRecord: 7.6ms | Allocations: 4118)
+
+
+  [1m[36mDiary Load (0.8ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."kind" = $1 AND (expiration <= '2021-04-20 04:35:27.807555')[0m  [["kind", 1]]
+  ↳ app/workers/expired_diaries_worker.rb:15:in `perform'
+Started GET "/api/v1/diaries/" for ::1 at 2021-04-20 11:35:29 +0700
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::DiariesController#index as */*
+  Parameters: {"diary"=>{}}
+  [1m[36mDiary Load (2.5ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" ORDER BY created_at DESC[0m
+  ↳ app/controllers/api/v1/diaries_controller.rb:9:in `index'
+Completed 200 OK in 21ms (Views: 6.4ms | ActiveRecord: 9.8ms | Allocations: 4595)
+
+
+Started GET "/api/v1/diaries/" for ::1 at 2021-04-20 11:35:29 +0700
+Processing by Api::V1::DiariesController#index as */*
+  Parameters: {"diary"=>{}}
+  [1m[36mDiary Load (2.0ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" ORDER BY created_at DESC[0m
+  ↳ app/controllers/api/v1/diaries_controller.rb:9:in `index'
+Completed 200 OK in 8ms (Views: 3.3ms | ActiveRecord: 2.0ms | Allocations: 1474)
+
+
+  [1m[36mDiary Load (0.8ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."kind" = $1 AND (expiration <= '2021-04-20 04:35:59.698494')[0m  [["kind", 1]]
+  ↳ app/workers/expired_diaries_worker.rb:15:in `perform'
+Started GET "/api/v1/diaries/" for ::1 at 2021-04-20 11:36:09 +0700
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::DiariesController#index as */*
+  Parameters: {"diary"=>{}}
+  [1m[36mDiary Load (1.6ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" ORDER BY created_at DESC[0m
+  ↳ app/controllers/api/v1/diaries_controller.rb:9:in `index'
+Completed 200 OK in 19ms (Views: 7.2ms | ActiveRecord: 10.0ms | Allocations: 4595)
+
+
+Started GET "/api/v1/diaries/" for ::1 at 2021-04-20 11:37:45 +0700
+Processing by Api::V1::DiariesController#index as */*
+  Parameters: {"diary"=>{}}
+  [1m[36mDiary Load (2.0ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" ORDER BY created_at DESC[0m
+  ↳ app/controllers/api/v1/diaries_controller.rb:9:in `index'
+Completed 200 OK in 11ms (Views: 5.7ms | ActiveRecord: 2.0ms | Allocations: 1474)
+
+
+Started GET "/api/v1/diaries/" for ::1 at 2021-04-20 11:37:45 +0700
+Processing by Api::V1::DiariesController#index as */*
+  Parameters: {"diary"=>{}}
+  [1m[36mDiary Load (2.0ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" ORDER BY created_at DESC[0m
+  ↳ app/controllers/api/v1/diaries_controller.rb:9:in `index'
+Completed 200 OK in 12ms (Views: 5.6ms | ActiveRecord: 2.0ms | Allocations: 1474)
+
+
+  [1m[36mDiary Load (1.2ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."kind" = $1 AND (expiration <= '2021-04-20 04:45:59.338022')[0m  [["kind", 1]]
+  ↳ app/workers/expired_diaries_worker.rb:15:in `perform'
+  [1m[36mDiary Load (13.0ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."kind" = $1 AND (expiration <= '2021-04-20 12:43:58.198668')[0m  [["kind", 1]]
+  ↳ app/workers/expired_diaries_worker.rb:15:in `perform'
+  [1m[36mDiary Load (0.7ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."kind" = $1 AND (expiration <= '2021-04-20 12:45:59.523308')[0m  [["kind", 1]]
+  ↳ app/workers/expired_diaries_worker.rb:15:in `perform'
+  [1m[36mDiary Load (2.8ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."kind" = $1 AND (expiration <= '2021-04-20 12:55:59.396897')[0m  [["kind", 1]]
+  ↳ app/workers/expired_diaries_worker.rb:15:in `perform'
+  [1m[36mDiary Load (1.3ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."kind" = $1 AND (expiration <= '2021-04-20 13:05:59.469806')[0m  [["kind", 1]]
+  ↳ app/workers/expired_diaries_worker.rb:15:in `perform'
+  [1m[36mDiary Load (0.8ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."kind" = $1 AND (expiration <= '2021-04-20 13:15:59.557093')[0m  [["kind", 1]]
+  ↳ app/workers/expired_diaries_worker.rb:15:in `perform'
+  [1m[36mDiary Load (2.2ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."kind" = $1 AND (expiration <= '2021-04-20 13:25:59.416030')[0m  [["kind", 1]]
+  ↳ app/workers/expired_diaries_worker.rb:15:in `perform'
+  [1m[36mDiary Load (2.1ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."kind" = $1 AND (expiration <= '2021-04-20 13:35:59.595886')[0m  [["kind", 1]]
+  ↳ app/workers/expired_diaries_worker.rb:15:in `perform'
+  [1m[36mDiary Load (1.3ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."kind" = $1 AND (expiration <= '2021-04-20 13:45:59.399411')[0m  [["kind", 1]]
+  ↳ app/workers/expired_diaries_worker.rb:15:in `perform'
+  [1m[36mDiary Load (1.3ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."kind" = $1 AND (expiration <= '2021-04-20 13:55:59.557223')[0m  [["kind", 1]]
+  ↳ app/workers/expired_diaries_worker.rb:15:in `perform'
+  [1m[36mDiary Load (3.0ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."kind" = $1 AND (expiration <= '2021-04-20 14:05:59.446755')[0m  [["kind", 1]]
+  ↳ app/workers/expired_diaries_worker.rb:15:in `perform'
+  [1m[36mDiary Load (3.6ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."kind" = $1 AND (expiration <= '2021-04-20 14:15:59.613234')[0m  [["kind", 1]]
+  ↳ app/workers/expired_diaries_worker.rb:15:in `perform'
+  [1m[36mDiary Load (2.3ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."kind" = $1 AND (expiration <= '2021-04-20 14:25:59.478493')[0m  [["kind", 1]]
+  ↳ app/workers/expired_diaries_worker.rb:15:in `perform'
+  [1m[36mDiary Load (1.5ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."kind" = $1 AND (expiration <= '2021-04-20 14:35:59.608647')[0m  [["kind", 1]]
+  ↳ app/workers/expired_diaries_worker.rb:15:in `perform'
+  [1m[36mDiary Load (0.9ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."kind" = $1 AND (expiration <= '2021-04-21 02:07:20.168410')[0m  [["kind", 1]]
+  ↳ app/workers/expired_diaries_worker.rb:15:in `perform'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/workers/expired_diaries_worker.rb:15:in `perform'
+  [1m[36mNote Destroy (11.3ms)[0m  [1m[31mDELETE FROM "notes" WHERE "notes"."diary_id" = $1[0m  [["diary_id", 3]]
+  ↳ app/workers/expired_diaries_worker.rb:15:in `perform'
+  [1m[36mDiary Destroy (1.8ms)[0m  [1m[31mDELETE FROM "diaries" WHERE "diaries"."id" = $1[0m  [["id", 3]]
+  ↳ app/workers/expired_diaries_worker.rb:15:in `perform'
+  [1m[36mTRANSACTION (434.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/workers/expired_diaries_worker.rb:15:in `perform'
