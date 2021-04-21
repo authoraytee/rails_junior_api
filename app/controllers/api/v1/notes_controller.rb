@@ -43,7 +43,7 @@ module Api
       private
 
       def note_params
-        params.permit(:title, :body)
+        params.permit(:text, :diary_id)
       end
     end
   end
