@@ -8,13 +8,10 @@ class ExpiredDiariesWorker
 
   # Woker initializer
   def perform
-    diaries = Diary.all
-
-    diaries.each do |diary|
-      if diary.expiration <= Time.now.in_time_zone
-        diary.destroy
-        puts 'Дневник ', diary.title, ' удален!'
-      end
-    end
+    diaries = Diary.where(
+      kind: :personal
+    ).where(
+      "expiration <= ?", DateTime.current #Time.now.in_time_zone 
+    ).destroy_all
   end
 end
