@@ -2,6 +2,7 @@
 
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
+gem 'mimemagic', github: 'mimemagicrb/mimemagic', ref: '01f92d86d15d85cfd0f20dabd025dcbd36a8a60f'
 
 ruby '2.6.6'
 
@@ -12,7 +13,7 @@ gem 'puma', '~> 5.0'
 gem 'sass-rails', '>= 6'
 gem 'turbolinks', '~> 5'
 
-gem 'rufus-scheduler'
+
 
 gem 'pg'
 gem 'sidekiq'
