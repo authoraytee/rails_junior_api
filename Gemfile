@@ -14,6 +14,7 @@ gem 'sass-rails', '>= 6'
 gem 'turbolinks', '~> 5'
 
 gem 'pg'
+gem 'rubocop-rails'
 gem 'sidekiq'
 gem 'sidekiq-scheduler'
 gem 'sidekiq-unique-jobs'
@@ -37,6 +38,8 @@ group :development do
   gem 'web-console', '>= 4.1.0'
 
   gem 'faker'
+
+  gem 'rubocop', require: false
 end
 
 group :test do

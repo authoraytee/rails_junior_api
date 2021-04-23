@@ -16074,3 +16074,163 @@ Completed 404 Not Found in 8ms (ActiveRecord: 2.4ms | Allocations: 1125)
 ActiveRecord::RecordNotFound (Couldn't find Diary with 'id'=new):
   
 app/controllers/crud/diaries_crud_controller.rb:10:in `show'
+  [1m[36mDiary Load (1.0ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."kind" = $1 AND (expiration <= '2021-04-23 04:12:40.429386')[0m  [["kind", 1]]
+  ↳ app/workers/expired_diaries_worker.rb:15:in `perform'
+Started GET "/diaries/2" for ::1 at 2021-04-23 11:12:46 +0700
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Crud::DiariesCrudController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mDiary Load (1.2ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/crud/diaries_crud_controller.rb:10:in `show'
+  Rendering crud/diaries_crud/show.html.erb
+  Rendered crud/diaries_crud/show.html.erb (Duration: 1.4ms | Allocations: 299)
+Completed 200 OK in 38ms (Views: 4.5ms | ActiveRecord: 11.0ms | Allocations: 8723)
+
+
+Started GET "/diaries/" for ::1 at 2021-04-23 11:12:49 +0700
+Processing by Crud::DiariesCrudController#index as HTML
+  Rendering crud/diaries_crud/index.html.erb
+  [1m[36mDiary Load (1.4ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries"[0m
+  ↳ app/views/crud/diaries_crud/index.html.erb:4
+  Rendered crud/diaries_crud/index.html.erb (Duration: 14.1ms | Allocations: 3902)
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 1.4ms | Allocations: 4316)
+
+
+  
+ActionView::Template::Error (undefined method `diary_path' for #<ActionView::Base:0x007f3a78b8b2a8>
+Did you mean?  diaries_path):
+    3: <ul>
+    4:   <% @diaries.each do |diary| %>
+    5:     <li>
+    6:       #<%= link_to diary.title, diary %>
+    7:     </li>
+    8:   <% end %>
+    9: </ul>
+  
+app/views/crud/diaries_crud/index.html.erb:6
+app/views/crud/diaries_crud/index.html.erb:4
+Started GET "/diaries/" for ::1 at 2021-04-23 11:14:24 +0700
+Processing by Crud::DiariesCrudController#index as HTML
+  Rendering crud/diaries_crud/index.html.erb
+  [1m[36mDiary Load (5.5ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries"[0m
+  ↳ app/views/crud/diaries_crud/index.html.erb:4
+  Rendered crud/diaries_crud/index.html.erb (Duration: 75.4ms | Allocations: 4886)
+Completed 500 Internal Server Error in 82ms (ActiveRecord: 5.5ms | Allocations: 5586)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `new_diary_path' for #<ActionView::Base:0x007f3a78fafc80>
+Did you mean?  new_api_v1_diary_path):
+     7:     </li>
+     8:   <% end %>
+     9: </ul>
+    10: <%= link_to "New Diary", new_diary_path %>
+  
+app/views/crud/diaries_crud/index.html.erb:10
+Started GET "/diaries/" for ::1 at 2021-04-23 11:15:44 +0700
+Processing by Crud::DiariesCrudController#index as HTML
+  Rendering crud/diaries_crud/index.html.erb
+  [1m[36mDiary Load (2.1ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries"[0m
+  ↳ app/views/crud/diaries_crud/index.html.erb:4
+  Rendered crud/diaries_crud/index.html.erb (Duration: 43.2ms | Allocations: 8513)
+Completed 500 Internal Server Error in 49ms (ActiveRecord: 11.9ms | Allocations: 10407)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `new_diary_path' for #<ActionView::Base:0x0055b0a0c4c830>
+Did you mean?  new_api_v1_diary_path):
+     7:     </li>
+     8:   <% end %>
+     9: </ul>
+    10: # <%= link_to "New Diary", new_diary_path %>
+  
+app/views/crud/diaries_crud/index.html.erb:10
+Started GET "/diaries/" for ::1 at 2021-04-23 11:15:57 +0700
+Processing by Crud::DiariesCrudController#index as HTML
+  Rendering crud/diaries_crud/index.html.erb
+  [1m[36mDiary Load (1.5ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries"[0m
+  ↳ app/views/crud/diaries_crud/index.html.erb:4
+  Rendered crud/diaries_crud/index.html.erb (Duration: 6.8ms | Allocations: 1170)
+Completed 200 OK in 12ms (Views: 7.7ms | ActiveRecord: 1.5ms | Allocations: 1817)
+
+
+Started GET "/diaries/" for ::1 at 2021-04-23 11:16:52 +0700
+Processing by Crud::DiariesCrudController#index as HTML
+  Rendering crud/diaries_crud/index.html.erb
+  [1m[36mDiary Load (3.5ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries"[0m
+  ↳ app/views/crud/diaries_crud/index.html.erb:4
+  Rendered crud/diaries_crud/index.html.erb (Duration: 66.9ms | Allocations: 3550)
+Completed 500 Internal Server Error in 78ms (ActiveRecord: 3.5ms | Allocations: 4160)
+
+
+  
+ActionView::Template::Error (undefined method `diary_path' for #<ActionView::Base:0x0055b0a0a5a0b8>
+Did you mean?  diaries_path):
+    3: <ul>
+    4:   <% @diaries.each do |diary| %>
+    5:     <li>
+    6:       <%= link_to 'ssss', diary %>
+    7:     </li>
+    8:   <% end %>
+    9: </ul>
+  
+app/views/crud/diaries_crud/index.html.erb:6
+app/views/crud/diaries_crud/index.html.erb:4
+Started GET "/diaries/" for ::1 at 2021-04-23 11:17:07 +0700
+Processing by Crud::DiariesCrudController#index as HTML
+  Rendering crud/diaries_crud/index.html.erb
+  [1m[36mDiary Load (6.4ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries"[0m
+  ↳ app/views/crud/diaries_crud/index.html.erb:4
+  Rendered crud/diaries_crud/index.html.erb (Duration: 23.6ms | Allocations: 1031)
+Completed 200 OK in 36ms (Views: 21.7ms | ActiveRecord: 6.4ms | Allocations: 1662)
+
+
+Started GET "/diaries/" for ::1 at 2021-04-23 11:17:27 +0700
+Processing by Crud::DiariesCrudController#index as HTML
+  Rendering crud/diaries_crud/index.html.erb
+  [1m[36mDiary Load (5.2ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries"[0m
+  ↳ app/views/crud/diaries_crud/index.html.erb:4
+  Rendered crud/diaries_crud/index.html.erb (Duration: 18.8ms | Allocations: 1193)
+Completed 200 OK in 27ms (Views: 17.2ms | ActiveRecord: 5.2ms | Allocations: 1832)
+
+
+Started GET "/diaries/" for ::1 at 2021-04-23 11:17:47 +0700
+Processing by Crud::DiariesCrudController#index as HTML
+  Rendering crud/diaries_crud/index.html.erb
+  [1m[36mDiary Load (6.0ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries"[0m
+  ↳ app/views/crud/diaries_crud/index.html.erb:4
+  Rendered crud/diaries_crud/index.html.erb (Duration: 18.4ms | Allocations: 1190)
+Completed 200 OK in 34ms (Views: 23.0ms | ActiveRecord: 6.0ms | Allocations: 1829)
+
+
+Started GET "/diaries/" for ::1 at 2021-04-23 11:18:47 +0700
+Processing by Crud::DiariesCrudController#index as HTML
+  Rendering crud/diaries_crud/index.html.erb
+  [1m[36mDiary Load (2.4ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries"[0m
+  ↳ app/views/crud/diaries_crud/index.html.erb:4
+  Rendered crud/diaries_crud/index.html.erb (Duration: 26.4ms | Allocations: 3955)
+Completed 500 Internal Server Error in 36ms (ActiveRecord: 2.4ms | Allocations: 4565)
+
+
+  
+ActionView::Template::Error (undefined method `diary_path' for #<ActionView::Base:0x0055b0a1ecbad8>
+Did you mean?  diaries_path):
+    3: <ul>
+    4:   <% @diaries.each do |diary| %>
+    5:     <li>
+    6:       <%= link_to diary.title, diary_path(diary) %>
+    7:     </li>
+    8:   <% end %>
+    9: </ul>
+  
+app/views/crud/diaries_crud/index.html.erb:6
+app/views/crud/diaries_crud/index.html.erb:4
+Started GET "/diaries/" for ::1 at 2021-04-23 11:19:00 +0700
+Processing by Crud::DiariesCrudController#index as HTML
+  Rendering crud/diaries_crud/index.html.erb
+  [1m[36mDiary Load (5.9ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries"[0m
+  ↳ app/views/crud/diaries_crud/index.html.erb:4
+  Rendered crud/diaries_crud/index.html.erb (Duration: 29.3ms | Allocations: 1109)
+Completed 200 OK in 42ms (Views: 29.9ms | ActiveRecord: 5.9ms | Allocations: 1740)
+
+
