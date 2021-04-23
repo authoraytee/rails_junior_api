@@ -13,8 +13,6 @@ gem 'puma', '~> 5.0'
 gem 'sass-rails', '>= 6'
 gem 'turbolinks', '~> 5'
 
-
-
 gem 'pg'
 gem 'sidekiq'
 gem 'sidekiq-scheduler'

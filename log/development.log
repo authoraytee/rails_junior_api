@@ -10770,3 +10770,36 @@ Completed 200 OK in 12ms (Views: 5.6ms | ActiveRecord: 2.0ms | Allocations: 1474
   ↳ app/workers/expired_diaries_worker.rb:15:in `perform'
   [1m[36mTRANSACTION (434.0ms)[0m  [1m[35mCOMMIT[0m
   ↳ app/workers/expired_diaries_worker.rb:15:in `perform'
+  [1m[36mDiary Load (25.2ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."kind" = $1 AND (expiration <= '2021-04-23 02:18:26.715404')[0m  [["kind", 1]]
+  ↳ app/workers/expired_diaries_worker.rb:15:in `perform'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/workers/expired_diaries_worker.rb:15:in `perform'
+  [1m[36mNote Destroy (81.5ms)[0m  [1m[31mDELETE FROM "notes" WHERE "notes"."diary_id" = $1[0m  [["diary_id", 4]]
+  ↳ app/workers/expired_diaries_worker.rb:15:in `perform'
+  [1m[36mDiary Destroy (29.0ms)[0m  [1m[31mDELETE FROM "diaries" WHERE "diaries"."id" = $1[0m  [["id", 4]]
+  ↳ app/workers/expired_diaries_worker.rb:15:in `perform'
+  [1m[36mTRANSACTION (45.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/workers/expired_diaries_worker.rb:15:in `perform'
+Started GET "/" for ::1 at 2021-04-23 09:19:49 +0700
+  [1m[35m (28.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/authoraytee/.asdf/installs/ruby/2.6.6/lib/ruby/gems/2.6.0/gems/railties-6.1.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/authoraytee/.asdf/installs/ruby/2.6.6/lib/ruby/gems/2.6.0/gems/railties-6.1.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 43.4ms | Allocations: 350)
+Completed 200 OK in 239ms (Views: 64.8ms | ActiveRecord: 0.0ms | Allocations: 2639)
+
+
+Started GET "/api/v1/diaries/" for ::1 at 2021-04-23 09:21:09 +0700
+Processing by Api::V1::DiariesController#index as */*
+  Parameters: {"diary"=>{}}
+  [1m[36mDiary Load (4.5ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" ORDER BY created_at DESC[0m
+  ↳ app/controllers/api/v1/diaries_controller.rb:9:in `index'
+Completed 200 OK in 55ms (Views: 17.6ms | ActiveRecord: 43.3ms | Allocations: 4369)
+
+
+Started GET "/api/v1/notes/" for ::1 at 2021-04-23 09:21:48 +0700
+Processing by Api::V1::NotesController#index as */*
+  [1m[36mNote Load (2.3ms)[0m  [1m[34mSELECT "notes".* FROM "notes" ORDER BY created_at DESC[0m
+  ↳ app/controllers/api/v1/notes_controller.rb:9:in `index'
+Completed 200 OK in 24ms (Views: 9.5ms | ActiveRecord: 9.4ms | Allocations: 5356)
+
+

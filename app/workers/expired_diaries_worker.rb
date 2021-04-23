@@ -11,7 +11,7 @@ class ExpiredDiariesWorker
     diaries = Diary.where(
       kind: :personal
     ).where(
-      "expiration <= ?", DateTime.current #Time.now.in_time_zone 
+      'expiration <= ?', DateTime.current # Time.now.in_time_zone
     ).destroy_all
   end
 end
