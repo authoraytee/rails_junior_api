@@ -3,8 +3,12 @@
 <ul>
   <% @diaries.each do |diary| %>
     <li>
-      <%= link_to diary.title, diaries_path(diary) %>
+      <a href="/diaries/<%= diary.id %>">
+        <%= diary.title %>
+      </a>
     </li>
+    
+    <br>
   <% end %>
 </ul>
 
