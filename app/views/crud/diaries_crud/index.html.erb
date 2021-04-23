@@ -1,0 +1,12 @@
+<h1>Diaries</h1>
+
+<ul>
+  <% @diaries.each do |diary| %>
+    <li>
+      #<%= link_to diary.title, diary %>
+    </li>
+  <% end %>
+</ul>
+<%= link_to "New Diary", new_diary_path %>
+
+

@@ -1,0 +1,22 @@
+<h1>New Diary</h1>
+
+<%= form_with model: @diary, local: true do |form| %>
+  <div>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :expiration %><br>
+    <%= form.text_area :expiration %>
+  </div>
+
+  <div>
+    <%= form.label :kind %><br>
+    <%= form.text_area :kind %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
