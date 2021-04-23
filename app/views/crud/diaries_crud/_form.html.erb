@@ -1,0 +1,29 @@
+<%= form_with model: diary, local: true do |form| %>
+  <div>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+    <%= diary.errors.full_messages_for(:title).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :expiration %><br>
+    <%= form.text_field :expiration %>
+    <%= diary.errors.full_messages_for(:expiration).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+  <%= form.label :kind %><br>
+  <%= form.text_field :kind %>
+  <%= diary.errors.full_messages_for(:kind).each do |message| %>
+    <div><%= message %></div>
+  <% end %>
+</div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
