@@ -3,9 +3,37 @@
 <ul>
   <% @diaries.each do |diary| %>
     <li>
-      <%= link_to diary.title, diaries_path(diary) %>
+      <%= link_to diary.title, new_crud_diary_path(@diaries.ids) %>
     </li>
+    
+    <br>
   <% end %>
 </ul>
+
+<h3><a href="/diaries/new/">Create new diary</a></h3>
+
+
+
+
+
+<h1>List of diaries</h1>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Options</th>
+    </tr>
+  </thead>
+
+  <% @diaries.each do |diary| %>
+    <tr>
+      <td><%= link_to diary.title, @diary %></td>
+
+      <td><%= link_to "Edit diary", crud_diary_path(@diary) %></td>
+        
+    </tr>
+  <% end -%>
+</table>
 
 
