@@ -16234,3 +16234,5 @@ Processing by Crud::DiariesCrudController#index as HTML
 Completed 200 OK in 42ms (Views: 29.9ms | ActiveRecord: 5.9ms | Allocations: 1740)
 
 
+  [1m[36mDiary Load (46.6ms)[0m  [1m[34mSELECT "diaries".* FROM "diaries" WHERE "diaries"."kind" = $1 AND (expiration <= '2021-04-26 02:10:55.851973')[0m  [["kind", 1]]
+  ↳ app/workers/expired_diaries_worker.rb:15:in `perform'
