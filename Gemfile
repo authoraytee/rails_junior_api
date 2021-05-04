@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 gem 'mimemagic', github: 'mimemagicrb/mimemagic', ref: '01f92d86d15d85cfd0f20dabd025dcbd36a8a60f'
@@ -18,6 +16,11 @@ gem 'rubocop-rails'
 gem 'sidekiq'
 gem 'sidekiq-scheduler'
 gem 'sidekiq-unique-jobs'
+
+# Для простых тегов html без закрытия
+gem 'slim'
+
+gem 'webpacker', '~> 6.x'
 
 gem 'mockserver-client'
 gem 'rest-client'
