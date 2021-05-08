@@ -1,18 +1,25 @@
-<h1>Diaries</h1>
 
-<ul>
-  <% @diaries.each do |diary| %>
-    <li>
-      <%= link_to diary.title, new_crud_diary_path(@diaries.ids) %>
-    </li>
+<section class='main_section'>
+  <div class='wrapper'>
+
+    <div class="main_section_header">
+      <h1>Diaries</h1>
+
+      <a href="/diaries/new/" class="create_new">Create new diary</a>
+    </div>
+
+    <ul>
+      <% @diaries.each do |diary| %>
+        <li>
+          <%= link_to diary.title, new_crud_diary_path(@diaries.ids) %>
+        </li>
     
-    <br>
-  <% end %>
-</ul>
+        <br>
+      <% end %>
+    </ul>
 
-<h3><a href="/diaries/new/">Create new diary</a></h3>
-
-
+  </div>
+</section>
 
 
 
